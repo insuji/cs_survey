@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css" rel="stylesheet">
+        <link th:href="@{/css/normalize.css}" href="../css/normalize.css" rel="stylesheet">
+        <link th:href="@{/css/style.css}" href="../css/style.css" rel="stylesheet">
+        <title>CS Survey</title>
+    </head>
+    <body>
+        <header class="container text-center">
+            <img th:src="@{/img/logo.png}">
+        </header>
+        <section class="container">
+            <form th:action="@{/submitForm}" type="post">
+                <input type="hidden" name="brand" value="aguard">
+                <input type="hidden" name="star" value="">
+                <div class="star-box text-center">
+                    <h2 class="title-box">고객상담 만족도를 알려주세요.</h2>
+                    <ul class="ratingW">
+                        <li class="on"><a href="javascript:void(0);"><div class="star"></div></a></li>
+                        <li class="on"><a href="javascript:void(0);"><div class="star"></div></a></li>
+                        <li class="on"><a href="javascript:void(0);"><div class="star"></div></a></li>
+                        <li><a href="javascript:void(0);"><div class="star"></div></a></li>
+                        <li><a href="javascript:void(0);"><div class="star"></div></a></li>
+                    </ul>
+                </div>
+                <div class="comment-box">
+                    <div>
+                        <label class="comment-txt form-label">더 나은 고객응대를 위한 의견을 기재해 주세요.</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 d-md-block">
+                    <button class="btn btn-primary btn-confirm" type="submit" >등록</button>
+<!--                    <button id="submitBtn" class="btn btn-primary btn-confirm" type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal" >등록</button>-->
+                </div>
+            </form>
+        </section>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        소중한 의견 감사드립니다.<br>
+                        더 나은 서비스로 보답하겠습니다.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+        var currentScore = 3;
+        function ratingStar(star){
+            star.click(function(){
+
+                var stars = $('.ratingW').find('li')
+                stars.removeClass('on');
+
+                var thisIndex = $(this).parents('li').index();
+
+                for(var i=0; i <= thisIndex; i++){
+                    stars.eq(i).addClass('on');
+                }
+                currentScore = thisIndex+1;
+                console.log(currentScore);
+            });
+        };
+
+        $(function(){
+            if($('.ratingW').length > 0){
+                ratingStar($('.ratingW li a'));
+            }
+        });
+
+
+
+    </script>
+
+</html>
