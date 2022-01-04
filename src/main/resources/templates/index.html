@@ -10,12 +10,12 @@
     </head>
     <body>
         <header class="container text-center">
-            <img th:src="@{/img/logo.png}">
+            <img th:src="@{/img/}+${brand}+@{.png}">
         </header>
         <section class="container">
-            <form th:action="@{/submitForm}" type="post">
+            <form action="result.html" th:action="@{/submitForm}" method="post">
                 <input type="hidden" name="brand" value="aguard">
-                <input type="hidden" name="star" value="">
+                <input id="starVal" type="hidden" name="star" value="">
                 <div class="star-box text-center">
                     <h2 class="title-box">고객상담 만족도를 알려주세요.</h2>
                     <ul class="ratingW">
@@ -26,10 +26,43 @@
                         <li><a href="javascript:void(0);"><div class="star"></div></a></li>
                     </ul>
                 </div>
+                <div class="select-wrapper">
+                    <label class="comment-txt">상담원의 친절함에 만족하십니까?</label>
+                    <input id="q1Val" type="hidden" name="attitude" value="">
+                    <div class="q-wrapper q-1">
+                        <div class="q-box">매우만족</div>
+                        <div class="q-box">만족</div>
+                        <div class="q-box">보통</div>
+                        <div class="q-box">불만족</div>
+                        <div class="q-box">매우불만족</div>
+                    </div>
+                </div>
+                <div class="select-wrapper">
+                    <label class="comment-txt">상담원의 업무지식에 만족하십니까?</label>
+                    <input id="q2Val" type="hidden" name="know" value="aguard">
+                    <div class="q-wrapper q-2">
+                        <div class="q-box">매우만족</div>
+                        <div class="q-box">만족</div>
+                        <div class="q-box">보통</div>
+                        <div class="q-box">불만족</div>
+                        <div class="q-box">매우불만족</div>
+                    </div>
+                </div>
+                <div class="select-wrapper">
+                    <label class="comment-txt">불만족 또는 개선이 필요한 부분이 있으신가요?</label>
+                    <input id="q3Val" type="hidden" name="etc" value="aguard">
+                    <div class="q-wrapper q-3">
+                        <div class="q-box">없음</div>
+                        <div class="q-box">응대태도</div>
+                        <div class="q-box">전문지식</div>
+                        <div class="q-box">연결시간</div>
+                        <div class="q-box">자세한설명</div>
+                    </div>
+                </div>
                 <div class="comment-box">
                     <div>
                         <label class="comment-txt form-label">더 나은 고객응대를 위한 의견을 기재해 주세요.</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="comment" rows="8"></textarea>
                     </div>
                 </div>
                 <div class="d-grid gap-2 d-md-block">
@@ -58,6 +91,7 @@
     <script>
 
         var currentScore = 3;
+        $('#starVal').val(currentScore);
         function ratingStar(star){
             star.click(function(){
 
@@ -70,7 +104,7 @@
                     stars.eq(i).addClass('on');
                 }
                 currentScore = thisIndex+1;
-                console.log(currentScore);
+                $('#starVal').val(currentScore);
             });
         };
 
@@ -79,6 +113,15 @@
                 ratingStar($('.ratingW li a'));
             }
         });
+
+        $('.q-box').on('click', function() {
+            $(this).siblings().removeClass('black');
+            $(this).addClass('black');
+
+            const answer = $(this).text();
+            console.log(answer);
+            $(this).closest('.q-wrapper').siblings('input').val(answer);
+        })
 
 
 

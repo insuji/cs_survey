@@ -1,3 +1,12 @@
+body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 ul {
     padding: 0;
 }
@@ -93,9 +102,39 @@ header img {
     transform: rotate(35deg);
 }
 
-.comment-box {
-    padding: 50px 0 0px;
+
+/*.modal-body {*/
+/*    padding: 1.5rem 1rem;*/
+/*}*/
+
+/*.modal-footer {*/
+/*    padding: 0 0.75rem;*/
+/*}*/
+
+.result-txt {
+    text-align: center;
 }
+.select-wrapper {
+    margin: 5px 0 15px;
+}
+.q-wrapper {
+    display: flex;
+    margin: 5px -5px;
+}
+.q-box {
+    flex: 1 1 0;
+    margin: 0 5px 0 5px;
+    height: 50px;
+    display: flex;
+    text-align: center;
+    justify-content: center; ;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #ffffff;
+    background-color: grey;
+}
+
+
 
 .comment-txt {
     font-size: 1rem;
@@ -106,10 +145,19 @@ header img {
     border-radius: 24px;
     margin: 20px 0;
 }
-.modal-body {
-    padding: 1.5rem 1rem;
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 200px);
 }
 
-.modal-footer {
-    padding: 0 0.75rem;
+.btn.btn-confirm.small-btn {
+    width: 200px;
+}
+
+.black {
+    background-color: black;
 }

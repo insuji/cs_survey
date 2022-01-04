@@ -21,12 +21,19 @@ public class Survey {
 
     private String brand;
     private int star;
-    private String contents;
+    private String attitude;
+    private String know;
+    private String etc;
+    private String comment;
 
     @Builder
-    public Survey(String brand, int star, String contents) {
+    public Survey(String brand, int star, String attitude,
+                  String know, String etc, String comment) {
         this.brand = brand;
         this.star = star;
-        this.contents = contents;
+        this.attitude = attitude;
+        this.know = know;
+        this.etc = etc;
+        this.comment = comment;
     }
 }
