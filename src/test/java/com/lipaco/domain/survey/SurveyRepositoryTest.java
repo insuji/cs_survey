@@ -38,7 +38,7 @@ public class SurveyRepositoryTest {
         surveyRepository.save(Survey.builder()
                 .brand(brand)
                 .star(star)
-                .contents(contents)
+                .comment(contents)
                 .build());
 
         // when
