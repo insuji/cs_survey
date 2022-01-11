@@ -17,7 +17,7 @@ public class SurveyController {
 
     private final SurveyService surveyService;
 
-    @GetMapping("/index/{brand}")
+    @GetMapping("/{brand}")
     public String index(@PathVariable("brand") String brand,
                         Model model) {
         model.addAttribute("brand", brand);
