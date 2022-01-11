@@ -4,6 +4,7 @@ import com.lipaco.domain.survey.Survey;
 import com.lipaco.domain.survey.SurveyRepository;
 import com.lipaco.service.SurveyService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.flogger.Flogger;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,8 @@ public class SurveyController {
                        Model model) {
         surveyService.save(survey);
         String mallUrl;
+
+        log.info("brandd={}", selectedBrand);
 
         if (selectedBrand.equals("aguard")) {
             mallUrl = "https://www.aguardmall.com/";

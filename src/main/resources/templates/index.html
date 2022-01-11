@@ -13,7 +13,7 @@
             <img th:src="@{/img/}+${brand}+@{.png}">
         </header>
         <section class="container">
-            <form action="result.html" th:action="@{/submitForm}" method="post">
+            <form th:action="@{/submitForm}" method="post">
                 <input type="hidden" name="brand" value="aguard">
                 <input id="starVal" type="hidden" name="star" value="">
                 <div class="star-box text-center">
