@@ -34,7 +34,7 @@ public class SurveyController {
 
         redirectAttributes.addAttribute("brand", brand);
         log.info("brand1={}", brand);
-        return "redirect:result/{brand}";
+        return "redirect:result";
     }
 
     @GetMapping("/result")
