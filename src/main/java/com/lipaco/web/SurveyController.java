@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Slf4j
 @Controller
@@ -26,16 +27,25 @@ public class SurveyController {
 
     @PostMapping("/submitForm")
     public String save(@ModelAttribute("item") SurveyRequestDto survey,
-                       @RequestParam("brand") String selectedBrand,
+                       @RequestParam("brand") String brand,
+                       RedirectAttributes redirectAttributes,
                        Model model) {
         surveyService.save(survey);
+
+        redirectAttributes.addAttribute("brand", brand);
+        log.info("brand1={}", brand);
+        return "redirect:result/{brand}";
+    }
+
+    @GetMapping("/result")
+    public String result(@RequestParam("brand") String brand,
+                       Model model) {
+
         String mallUrl;
-
-        log.info("brandd={}", selectedBrand);
-
-        if (selectedBrand.equals("aguard")) {
+        log.info("brand={}", brand);
+        if (brand.equals("aguard")) {
             mallUrl = "https://www.aguardmall.com/";
-        } else if (selectedBrand.equals("monoflat")) {
+        } else if (brand.equals("monoflat")) {
             mallUrl =  "www.monoflat.com";
         } else {
             mallUrl = "https://www.petrium.co.kr/";
