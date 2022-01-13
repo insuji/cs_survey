@@ -28,27 +28,27 @@ public class SurveyRepositoryTest {
         surveyRepository.deleteAll();
     }
 
-    @Test
-    public void 설문조사_불러오기() {
-        //given
-        String brand = "테스트기업";
-        int star = 3;
-        String contents = "무난했어요.";
-
-        surveyRepository.save(Survey.builder()
-                .brand(brand)
-                .star(star)
-                .comment(contents)
-                .build());
-
-        // when
-        List<Survey> surveyList = surveyRepository.findAll();
-
-        // then
-        Survey survey = surveyList.get(0);
-        System.out.println(survey.getBrand());
-
-        assertThat(survey.getBrand()).isEqualTo(brand);
-
-    }
+//    @Test
+//    public void 설문조사_불러오기() {
+//        //given
+//        String brand = "테스트기업";
+//        int star = 3;
+//        String contents = "무난했어요.";
+//
+//        surveyRepository.save(Survey.builder()
+//                .brand(brand)
+//                .star(star)
+//                .comment(contents)
+//                .build());
+//
+//        // when
+//        List<Survey> surveyList = surveyRepository.findAll();
+//
+//        // then
+//        Survey survey = surveyList.get(0);
+//        System.out.println(survey.getBrand());
+//
+//        assertThat(survey.getBrand()).isEqualTo(brand);
+//
+//    }
 }
